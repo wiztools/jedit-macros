@@ -1,0 +1,42 @@
+// This jEdit macro replaces the following string in selection:
+// &  ->  &amp;
+// <  ->  &lt;
+// >  ->  &gt;
+// "  ->  &quot;
+// '  ->  &apos;
+// Macro has been tested with jEdit 4.3pre14 and 4.3pre16 version
+
+// This is public domain code from the archives of indiWiz.com
+
+// ######### Macro code starts #########
+
+// Global Search Option
+SearchAndReplace.setBeanShellReplace(false);
+SearchAndReplace.setIgnoreCase(false);
+SearchAndReplace.setRegexp(false);
+
+// Replace & to &amp;
+SearchAndReplace.setSearchString("&");
+SearchAndReplace.setReplaceString("&amp;");
+SearchAndReplace.replace(view);
+
+// Replace < to &lt;
+SearchAndReplace.setSearchString("<");
+SearchAndReplace.setReplaceString("&lt;");
+SearchAndReplace.replace(view);
+
+// Replace > to &gt;
+SearchAndReplace.setSearchString(">");
+SearchAndReplace.setReplaceString("&gt;");
+SearchAndReplace.replace(view);
+
+// Replace " to &quot;
+SearchAndReplace.setSearchString("\"");
+SearchAndReplace.setReplaceString("&quot;");
+SearchAndReplace.replace(view);
+
+// Replace ' to &quot;
+SearchAndReplace.setSearchString("'");
+SearchAndReplace.setReplaceString("&apos;");
+SearchAndReplace.replace(view);
+
