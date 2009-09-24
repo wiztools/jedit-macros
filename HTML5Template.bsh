@@ -32,7 +32,6 @@ template += "    \n";
 template += "    </footer>\n";
 template += "  </body>\n";
 template += "</html>\n";
-template += "\n";
 
 textArea.setText(template);
 
