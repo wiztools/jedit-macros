@@ -1,0 +1,48 @@
+// This jEdit macro creates a new buffer and
+// inserts HTML5 template.
+
+// This is public domain code from WizTools.org
+
+// ######### Macro code starts #########
+
+jEdit.newFile(view);
+String template = "<!DOCTYPE html>\n";
+template += "<html>\n";
+template += "  <head>\n";
+template += "    <title></title>\n";
+template += "  </head>\n";
+template += "  \n";
+template += "  <body>\n";
+template += "    <header>\n";
+template += "    \n";
+template += "    </header>\n";
+template += "    \n";
+template += "    <nav>\n";
+template += "    \n";
+template += "    </nav>\n";
+template += "    \n";
+template += "    <article>\n";
+template += "      <section>\n";
+template += "      \n";
+template += "      </section>\n";
+template += "    </article>\n";
+template += "    \n";
+template += "    <footer>\n";
+template += "    \n";
+template += "    </footer>\n";
+template += "  </body>\n";
+template += "</html>\n";
+template += "\n";
+
+textArea.setText(template);
+
+// Place the cursor inside the <title> element:
+
+textArea.goToBufferStart(false);
+for(int i=0; i<3; i++){
+  textArea.goToNextLine(false);
+}
+for(int i=0; i<11; i++){
+  textArea.goToNextCharacter(false);
+}
+
