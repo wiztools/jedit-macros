@@ -1,0 +1,26 @@
+// This jEdit macro makes C derived language code
+// into a single line.
+
+// I developed this macro when creating a
+// bookmarklet wherein I had to compact some
+// JavaScript code into a single line.
+
+// Can be used for compacting CSS too.
+
+// This is public domain code from WizTools.org
+
+// ######### Macro code starts #########
+
+// The variable name to assign the text:
+
+String str = textArea.getSelectedText();
+if(str != null){
+    str = str.trim();
+    str = str.replaceAll("\\s*\n\\s*", "");
+    // Compact any sequence of space characters
+    // to one space:
+    str = str.replaceAll("\\s{2,}", " ");
+
+    textArea.setSelectedText(str);
+}
+
