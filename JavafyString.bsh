@@ -9,26 +9,28 @@
 final String VAR_NAME = "str";
 
 String str = textArea.getSelectedText();
-String[] arr = str.split("\n");
+if(str != null){
+  String[] arr = str.split("\n");
 
-StringBuilder sb = new StringBuilder();
-sb.append("String ");
+  StringBuilder sb = new StringBuilder();
+  sb.append("String ");
 
-int i = 0;
-for(String s: arr){
-  String equality = null;
-  if(i == 0){
-    equality = " = ";
+  int i = 0;
+  for(String s: arr){
+    String equality = null;
+    if(i == 0){
+      equality = " = ";
+    }
+    else{
+      equality = " += ";
+    }
+    // mystery: why should I give double `\\'??
+    s = s.replaceAll("\\\\", "\\\\\\\\");
+    s = s.replaceAll("\"", "\\\\\"");
+    sb.append(VAR_NAME).append(equality).append("\"").append(s).append("\\n\";\n");
+    i++;
   }
-  else{
-    equality = " += ";
-  }
-  // mystery: why should I give double `\\'??
-  s = s.replaceAll("\\\\", "\\\\\\\\");
-  s = s.replaceAll("\"", "\\\\\"");
-  sb.append(VAR_NAME).append(equality).append("\"").append(s).append("\\n\";\n");
-  i++;
+
+  textArea.setSelectedText(sb.toString());
 }
-
-textArea.setSelectedText(sb.toString());
 
