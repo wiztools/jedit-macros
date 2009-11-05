@@ -11,8 +11,6 @@
 
 // ######### Macro code starts #########
 
-// The variable name to assign the text:
-
 String str = textArea.getSelectedText();
 if(str != null){
     str = str.trim();

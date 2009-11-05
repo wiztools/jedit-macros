@@ -1,0 +1,58 @@
+// This jEdit macro converts HTML special characters
+// to its corresponding entity codes.
+
+// This is public domain code from WizTools.org
+
+// ######### Macro code starts #########
+
+import java.io.CharArrayWriter;
+
+String str = textArea.getSelectedText();
+if(str != null){
+    // Convert &
+    str = str.replaceAll("&", "&amp;");
+    
+    // Convert < and >
+    str = str.replaceAll("<", "&lt;");
+    str = str.replaceAll(">", "&gt;");
+    
+    // Convert ---
+    str = str.replaceAll("-{2,3}", "&mdash;");
+    str = str.replaceAll("-", "&ndash;");
+    
+    // Convert quotes:
+    CharArrayWriter w = new CharArrayWriter();
+    char[] arr = str.toCharArray();
+    boolean isSingleQuoteOpened = false;
+    boolean isDoubleQuoteOpened = false;
+    for(char c: arr){
+        switch(c){
+            case '\'':
+                if(isSingleQuoteOpened){
+                    w.append("&rsquo;");
+                    isSingleQuoteOpened = false;
+                }
+                else{
+                    w.append("&lsquo;");
+                    isSingleQuoteOpened = true;
+                }
+                break;
+            case '"':
+                if(isDoubleQuoteOpened){
+                    w.append("&rdquo;");
+                    isDoubleQuoteOpened = false;
+                }
+                else{
+                    w.append("&ldquo;");
+                    isDoubleQuoteOpened = true;
+                }
+                break;
+            default:
+                w.append(c);
+        }
+    }
+    str = w.toString();
+
+    textArea.setSelectedText(str);
+}
+
